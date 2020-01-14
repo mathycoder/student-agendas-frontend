@@ -1,9 +1,8 @@
-const api_url = "https://studentagendas-backend.herokuapp.com"
 
 export function getCurrentUser(){
   return (dispatch) => {
     dispatch({ type: 'CHECKING_CURRENT_USER' })
-     fetch(`${api_url}/get_current_user`, {
+     fetch(`/get_current_user`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -25,7 +24,7 @@ export function getCurrentUser(){
 export function login(credentials, history){
   return (dispatch) => {
     dispatch({type: 'LOGIN_REQUEST'})
-    fetch(`${api_url}/login`, {
+    fetch(`/login`, {
       credentials: "include",
       method: "POST",
       headers: {
@@ -49,7 +48,7 @@ export function login(credentials, history){
 export function logout(history){
   return (dispatch) => {
     dispatch({type: 'LOGOUT_REQUEST'})
-    fetch(`${api_url}/logout`, {
+    fetch(`/logout`, {
       credentials: "include",
       method: "DELETE",
       headers: {
