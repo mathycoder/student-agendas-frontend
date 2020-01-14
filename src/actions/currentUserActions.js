@@ -13,6 +13,7 @@ export function getCurrentUser(){
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*"
       },
+      mode: "cors",
       credentials: "include"
     })
       .then(resp => resp.json())
