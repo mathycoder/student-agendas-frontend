@@ -1,9 +1,11 @@
-const api_url = "https://studentagendas-backend.herokuapp.com"
+const proxy = require('http-proxy-middleware');
+
+const apiProxy = proxy('/api', { target: "https://studentagendas-backend.herokuapp.com" });
 
 export function getCurrentUser(){
   return (dispatch) => {
     dispatch({ type: 'CHECKING_CURRENT_USER' })
-     fetch(`${api_url}/get_current_user`, {
+     fetch(`/api/get_current_user`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
