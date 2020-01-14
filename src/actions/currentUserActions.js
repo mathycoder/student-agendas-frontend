@@ -1,11 +1,11 @@
-const proxy = require('http-proxy-middleware');
-
-const apiProxy = proxy('/api', { target: "https://studentagendas-backend.herokuapp.com" });
+// const proxy = require('http-proxy-middleware');
+//
+// const apiProxy = proxy('/api', { target: "https://studentagendas-backend.herokuapp.com" });
 
 export function getCurrentUser(){
   return (dispatch) => {
     dispatch({ type: 'CHECKING_CURRENT_USER' })
-     fetch(`/api/get_current_user`, {
+     fetch(`/get_current_user`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -15,8 +15,10 @@ export function getCurrentUser(){
       .then(resp => resp.json())
       .then(user => {
         if (user.error){
+          console.log("no one is logged in!")
           dispatch({ type: 'SET_CURRENT_USER_TO_NONE' })
         } else {
+          console.log("setting current user!")
           dispatch({ type: 'SET_CURRENT_USER', user })
         }
       })
