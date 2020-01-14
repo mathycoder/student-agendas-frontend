@@ -1,8 +1,10 @@
+const api_url = "studentagendas-backend.herokuapp.com"
+
 export function addStudents(klassId){
   console.log("C")
   return (dispatch) => {
     dispatch({type: 'START_ADDING_STUDENTS_REQUEST'})
-    fetch(`/klasses/${klassId}/students`, {
+    fetch(`${api_url}/klasses/${klassId}/students`, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -23,7 +25,7 @@ export function addStudents(klassId){
 export function addStudentToKlass(klassId, studentData){
   return (dispatch) => {
     dispatch({type: 'START_ADDING_STUDENT_TO_KLASS_REQUEST'})
-    fetch(`/klasses/${klassId}/students`, {
+    fetch(`${api_url}/klasses/${klassId}/students`, {
       method: 'post',
       body: JSON.stringify(studentData),
       headers: {
@@ -45,7 +47,7 @@ export function addStudentToKlass(klassId, studentData){
 export function editStudentInKlass(klassId, studentData){
   return (dispatch) => {
     dispatch({type: 'START_EDITING_STUDENT_IN_KLASS_REQUEST'})
-    fetch(`/klasses/${klassId}/students/${studentData.id}`, {
+    fetch(`${api_url}/klasses/${klassId}/students/${studentData.id}`, {
       method: 'PATCH',
       credentials: "include",
       body: JSON.stringify(studentData),
@@ -67,7 +69,7 @@ export function editStudentInKlass(klassId, studentData){
 export function removeStudentFromKlass(studentData){
   return (dispatch) => {
     dispatch({type: 'START_REMOVING_STUDENT_FROM_KLASS_REQUEST'})
-    fetch(`/klasses/${studentData.klass_id}/students/${studentData.id}`, {
+    fetch(`${api_url}/klasses/${studentData.klass_id}/students/${studentData.id}`, {
       method: 'DELETE',
       credentials: "include",
       headers: {
@@ -85,7 +87,7 @@ export function removeStudentFromKlass(studentData){
 export function fetchStudentData(student){
   return (dispatch) => {
     dispatch({type: 'START_FETCHING_STUDENT_DATA'})
-    fetch(`/klasses/${student.klass_id}/students/${student.id}`, {
+    fetch(`${api_url}/klasses/${student.klass_id}/students/${student.id}`, {
       method: 'GET',
       credentials: "include",
       headers: {
