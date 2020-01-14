@@ -1,8 +1,9 @@
+const api_url = "https://studentagendas-backend.herokuapp.com"
 
 export function getCurrentUser(){
   return (dispatch) => {
     dispatch({ type: 'CHECKING_CURRENT_USER' })
-     fetch(`/get_current_user`, {
+     fetch(`${api_url}/get_current_user`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
