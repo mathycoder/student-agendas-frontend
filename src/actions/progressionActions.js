@@ -1,4 +1,4 @@
-const api_url = "studentagendas-backend.herokuapp.com"
+const api_url = "http://studentagendas-backend.herokuapp.com"
 
 export function fetchProgressions() {
   return (dispatch) => {
