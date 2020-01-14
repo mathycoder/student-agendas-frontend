@@ -10,7 +10,8 @@ export function getCurrentUser(){
      fetch(`${api_url}/get_current_user`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       },
       credentials: "include"
     })
