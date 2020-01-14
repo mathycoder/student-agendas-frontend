@@ -1,4 +1,4 @@
-const api_url = "http://studentagendas-backend.herokuapp.com"
+const api_url = "https://studentagendas-backend.herokuapp.com"
 
 export function getCurrentUser(){
   return (dispatch) => {
