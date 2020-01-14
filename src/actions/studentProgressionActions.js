@@ -1,4 +1,3 @@
-const api_url = "https://studentagendas-backend.herokuapp.com"
 
 export function addStudentProgression(student, progression) {
   return (dispatch) => {
@@ -8,7 +7,7 @@ export function addStudentProgression(student, progression) {
         progressionId: progression.id
       }
     }
-    fetch(`${api_url}/students/${student.id}/progressions`, {
+    fetch(`/students/${student.id}/progressions`, {
       method: 'POST',
       credentials: "include",
       body: JSON.stringify(params),
@@ -25,7 +24,7 @@ export function deleteStudentProgression(student, progression){
   return (dispatch) => {
     dispatch({type: 'START_REMOVE_PROGRESSION_FROM_STUDENT_REQUEST'})
 
-    fetch(`${api_url}/students/${student.id}/progressions/${progression.id}`, {
+    fetch(`/students/${student.id}/progressions/${progression.id}`, {
       method: 'DELETE',
       credentials: "include",
       headers: {
@@ -48,7 +47,7 @@ export function switchStudentProgression(draggableId, newIndex){
     }
     const studentId = draggableId.split("-")[1]
     const progressionId = draggableId.split("-")[3]
-    fetch(`${api_url}/students/${studentId}/progressions/${progressionId}`, {
+    fetch(`/students/${studentId}/progressions/${progressionId}`, {
       method: 'PATCH',
       credentials: "include",
       body: JSON.stringify(params),
@@ -63,7 +62,7 @@ export function switchStudentProgression(draggableId, newIndex){
 
 export function updateStudentProgression(student, progression, attribute){
   return (dispatch) => {
-    fetch(`${api_url}/students/${student.id}/progressions/${progression.id}`, {
+    fetch(`/students/${student.id}/progressions/${progression.id}`, {
       method: 'PATCH',
       credentials: "include",
       body: JSON.stringify(attribute),
@@ -78,7 +77,7 @@ export function updateStudentProgression(student, progression, attribute){
 
 export function updateStudentProgressionStatus(student, progression, status){
   return (dispatch) => {
-    fetch(`${api_url}/students/${student.id}/progressions/${progression.id}`, {
+    fetch(`/students/${student.id}/progressions/${progression.id}`, {
       method: 'PATCH',
       credentials: "include",
       body: JSON.stringify(status),
@@ -93,7 +92,7 @@ export function updateStudentProgressionStatus(student, progression, status){
 
 export function archiveStudentProgressions(currentUser, klassId){
   return (dispatch) => {
-    fetch(`${api_url}/klasses/${klassId}/archive_student_progressions`, {
+    fetch(`/klasses/${klassId}/archive_student_progressions`, {
       method: 'PATCH',
       credentials: "include",
       headers: {
@@ -107,7 +106,7 @@ export function archiveStudentProgressions(currentUser, klassId){
 
 export function addProgressionToKlass(klass, progression) {
   return (dispatch) => {
-    fetch(`${api_url}/klasses/${klass.id}/progressions/${progression.id}`, {
+    fetch(`/klasses/${klass.id}/progressions/${progression.id}`, {
       method: "PATCH",
       credentials: "include",
       headers: {

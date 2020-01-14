@@ -1,8 +1,7 @@
-const api_url = "https://studentagendas-backend.herokuapp.com"
 
 export function signup(teacherData, history){
   return (dispatch) => {
-     fetch(`${api_url}/teachers`, {
+     fetch(`/teachers`, {
        method: 'POST',
        body: JSON.stringify(teacherData),
        headers: {
@@ -26,7 +25,7 @@ export function signup(teacherData, history){
 
 export function updateTeacher(teacherData, history){
   return (dispatch) => {
-     fetch(`${api_url}/teachers/${teacherData.id}`, {
+     fetch(`/teachers/${teacherData.id}`, {
        method: 'PATCH',
        body: JSON.stringify(teacherData),
        headers: {
@@ -52,7 +51,7 @@ export function updateProfilePic(file, teacherId){
   return (dispatch) => {
     let data = new FormData()
     data.append('file', file)
-    fetch(`${api_url}/teachers/${teacherId}`, {
+    fetch(`/teachers/${teacherId}`, {
       method: 'PATCH',
       body: data,
       credentials: "include"

@@ -1,9 +1,8 @@
-const api_url = "https://studentagendas-backend.herokuapp.com"
 
 export function fetchProgressions() {
   return (dispatch) => {
     dispatch({type: 'START_ADDING_PROGRESSIONS_REQUEST'})
-    fetch(`${api_url}/progressions`, {
+    fetch(`/progressions`, {
       method: "GET",
       credentials: "include",
       headers: {
@@ -26,7 +25,7 @@ export function fetchProgressions() {
 export function addProgression(progression, history) {
   return (dispatch) => {
     dispatch({type: 'START_ADDING_PROGRESSION_REQUEST'})
-    fetch(`${api_url}/progressions`, {
+    fetch(`/progressions`, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify(progression),
@@ -50,7 +49,7 @@ export function addProgression(progression, history) {
 export function editProgression(progression, history) {
   return (dispatch) => {
     dispatch({type: 'START_EDITING_PROGRESSION_REQUEST'})
-    fetch(`${api_url}/progressions/${progression.progression.id}`, {
+    fetch(`/progressions/${progression.progression.id}`, {
       method: 'PATCH',
       credentials: "include",
       body: JSON.stringify(progression),
@@ -75,7 +74,7 @@ export function editProgression(progression, history) {
 export function deleteProgression(progression) {
   return (dispatch) => {
     dispatch({type: 'START_DELETING_PROGRESSION_REQUEST'})
-    fetch(`${api_url}/progressions/${progression.id}`, {
+    fetch(`/progressions/${progression.id}`, {
       method: 'DELETE',
       credentials: "include"
     })

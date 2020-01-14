@@ -1,9 +1,8 @@
-const api_url = "https://studentagendas-backend.herokuapp.com"
 
 export function fetchKlasses() {
   return (dispatch) => {
     dispatch({type: 'START_ADDING_KLASSES_REQUEST'})
-    fetch(`${api_url}/klasses`, {
+    fetch(`/klasses`, {
       credentials: "include",
       method: "GET",
       headers: {
@@ -24,7 +23,7 @@ export function fetchKlasses() {
 export function addKlass(klass){
   return (dispatch) => {
     dispatch({type: 'START_ADDING_KLASS_REQUEST', klass })
-    fetch(`${api_url}/klasses`, {
+    fetch(`/klasses`, {
       method: "POST",
       credentials: "include",
       body: JSON.stringify(klass),
@@ -46,7 +45,7 @@ export function addKlass(klass){
 export function editKlass(klass){
   return (dispatch) => {
     dispatch({type: 'START_EDITING_KLASS_REQUEST', klass})
-    fetch(`${api_url}/klasses/${klass.id}`, {
+    fetch(`/klasses/${klass.id}`, {
       method: "PATCH",
       credentials: "include",
       body: JSON.stringify(klass),
@@ -68,7 +67,7 @@ export function editKlass(klass){
 export function removeKlass(klassId){
   return (dispatch) => {
     dispatch({type: 'START_REMOVING_KLASS_REQUEST'})
-    fetch(`${api_url}/klasses/${klassId}`, {
+    fetch(`/klasses/${klassId}`, {
       method: 'DELETE',
       credentials: "include",
       headers: {
